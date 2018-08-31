@@ -1,13 +1,24 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { Carro } from "../../modulos/carro";
+import { HttpClient } from "@angular/common/http";
 
-@Component({
+@Component( {
   selector: 'page-home',
   templateUrl: 'home.html'
-})
+} )
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
+  public carros: Carro[];
+
+  constructor( public navCtrl: NavController, private _http: HttpClient ) {
+
+    this._http.get<Carro[]>( "http://localhost:8080/api/carro/listaTodos" )
+      .subscribe(
+        ( carros ) => {
+          this.carros = carros
+        }
+      );
 
   }
 
