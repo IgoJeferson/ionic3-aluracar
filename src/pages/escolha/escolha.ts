@@ -1,18 +1,23 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Carro } from "../../modulos/carro";
 
 @IonicPage()
-@Component({
+@Component( {
   selector: 'page-escolha',
   templateUrl: 'escolha.html',
-})
+} )
 export class EscolhaPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  public carro: Carro;
+
+  constructor( public navCtrl: NavController, public navParams: NavParams ) {
+
+    this.carro = this.navParams.get( 'carroSelecionado' );
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad EscolhaPage');
+    console.log( 'ionViewDidLoad EscolhaPage' );
   }
 
 }
