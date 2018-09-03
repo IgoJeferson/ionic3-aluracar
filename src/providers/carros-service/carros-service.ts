@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 import { HttpClient } from "@angular/common/http";
-import { Carro } from "../../modulos/carro";
+import { Carro } from "../../modelos/carro";
 
 @Injectable()
 export class CarrosServiceProvider {

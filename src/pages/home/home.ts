@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AlertController, LoadingController, NavController } from 'ionic-angular';
-import { Carro } from "../../modulos/carro";
+import { Carro } from "../../modelos/carro";
 import { HttpErrorResponse } from "@angular/common/http";
 import { CarrosServiceProvider } from "../../providers/carros-service/carros-service";
 import { NavLifecycles } from "../../utils/ionic/nav/nav-lifecycles";
@@ -55,9 +55,9 @@ export class HomePage implements NavLifecycles {
 
   selecionaCarro( carro: Carro ) {
     console.log( carro );
-    this.navCtrl.push( EscolhaPage, {
+    this.navCtrl.push( EscolhaPage.name, {
       carroSelecionado: carro
-  } )
+    } )
     ;
   }
 
