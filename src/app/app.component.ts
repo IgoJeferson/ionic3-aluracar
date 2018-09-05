@@ -6,6 +6,7 @@ import { HomePage } from "../pages/home/home";
 import { ListaAgendamentosPage } from "../pages/lista-agendamentos/lista-agendamentos";
 
 @Component( {
+  selector: 'myapp',
   templateUrl: 'app.html'
 } )
 export class MyApp {
