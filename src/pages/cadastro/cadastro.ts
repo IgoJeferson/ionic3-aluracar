@@ -37,8 +37,8 @@ export class CadastroPage {
     if ( !this.nome || !this.endereco || !this.email ) {
 
       this._alertCtrl.create( {
-        title: 'Validação dos campos',
-        subTitle: 'Todos os campos são de preenchimento obrigatório',
+        title: 'Preenchimento obrigatório',
+        subTitle: 'Preencha todos os campos!',
         buttons: [
           { text: 'ok ' }
         ]
@@ -72,13 +72,13 @@ export class CadastroPage {
 
     let mensagem = '';
 
-    this._agendamentoServiceProvider.agenda( agendamento )
+    this._agendamentoDaoProvider.ehDuplicado( agendamento )
       .mergeMap( ehDuplicado => {
         if ( ehDuplicado ) {
           throw new Error( 'Agendamento já existente! ' );
         }
 
-        return this._agendamentoDaoProvider.salva( agendamento );
+        return this._agendamentoServiceProvider.agenda( agendamento );
 
       } )
       .mergeMap( ( valor ) => {
