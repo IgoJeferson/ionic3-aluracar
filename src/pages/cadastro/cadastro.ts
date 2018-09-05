@@ -56,7 +56,7 @@ export class CadastroPage {
       confirmado: false,
       enviado: false,
       data: this.data
-    }
+    };
 
     this._alerta = this._alertCtrl.create( {
       title: 'Aviso ',
