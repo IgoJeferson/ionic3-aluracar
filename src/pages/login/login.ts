@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AlertController, IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HomePage } from "../home/home";
+import { UsuariosServiceProvider } from "../../providers/usuarios-service/usuarios-service";
+import { Usuario } from "../../modelos/usuario";
 
 
 @IonicPage()
@@ -10,17 +12,37 @@ import { HomePage } from "../home/home";
 } )
 export class LoginPage {
 
-  public email: string;
-  public password: string;
+  public email: string = "joao@alura.com.br";
+  public senha: string = "alura123";
 
-  constructor( public navCtrl: NavController, public navParams: NavParams ) {
+  constructor( public navCtrl: NavController,
+               public navParams: NavParams,
+               private _alertCtrl: AlertController,
+               private _usuariosService: UsuariosServiceProvider ) {
   }
 
   efetuaLogin() {
     console.log( this.email );
-    console.log( this.password );
+    console.log( this.senha );
 
-    this.navCtrl.setRoot( HomePage );
+    this._usuariosService
+      .efetuaLogin( this.email, this.senha )
+      .subscribe(
+        ( usuario: Usuario ) => {
+          console.log( usuario );
+          this.navCtrl.setRoot( HomePage );
+        },
+        () => {
+          this._alertCtrl.create( {
+            title: 'Falha no Login',
+            subTitle: 'Email ou senha incorretos ! Verifique!',
+            buttons: [
+              { text: 'Ok' }
+            ]
+          } ).present();
+        }
+      )
+
   }
 
 }

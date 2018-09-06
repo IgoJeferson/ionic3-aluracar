@@ -11,13 +11,13 @@ export class UsuariosServiceProvider {
   }
 
   efetuaLogin( email, senha ) {
-    this._http.post<Usuario>( 'http://localhost:8080/api/login', { email, senha } )
-              .do ( usuario => this._usuarioLogado = usuario );
+    return this._http.post<Usuario>( 'http://localhost:8080/api/login', { email, senha } )
+                     .do( usuario => this._usuarioLogado = usuario );
 
   }
 
   obtemUsuarioLogado() {
-    this._usuarioLogado;
+    return this._usuarioLogado;
   }
 
 
