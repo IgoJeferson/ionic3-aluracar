@@ -7,7 +7,6 @@ import { Storage } from "@ionic/storage";
 export class AgendamentoDaoProvider {
 
   constructor( private _storage: Storage ) {
-    console.log( 'Hello AgendamentoDaoProvider Provider' );
   }
 
   salva( agendamento: Agendamento ) {

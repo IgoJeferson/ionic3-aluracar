@@ -19,6 +19,7 @@ import { IonicStorageModule } from "@ionic/storage";
 import { AgendamentoDaoProvider } from '../providers/agendamento-dao/agendamento-dao';
 import { LoginPage } from "../pages/login/login";
 import { UsuariosServiceProvider } from '../providers/usuarios-service/usuarios-service';
+import { ApiServiceProvider } from '../providers/api-service/api-service';
 
 @NgModule( {
   declarations: [
@@ -49,7 +50,8 @@ import { UsuariosServiceProvider } from '../providers/usuarios-service/usuarios-
     CarrosServiceProvider,
     AgendamentosServiceProvider,
     AgendamentoDaoProvider,
-    UsuariosServiceProvider
+    UsuariosServiceProvider,
+    ApiServiceProvider
   ]
 } )
 export class AppModule {
